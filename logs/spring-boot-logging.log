@@ -1,0 +1,74 @@
+2019-04-04 14:41:25.008  INFO 36900 --- [main] com.hao.employment.Application           : Starting Application on fh12018111093 with PID 36900 (D:\BYSJ\Bysj_v1\target\classes started by haoxueqiao in D:\BYSJ\Bysj_v1)
+2019-04-04 14:41:25.014  INFO 36900 --- [main] com.hao.employment.Application           : No active profile set, falling back to default profiles: default
+2019-04-04 14:41:25.350  INFO 36900 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6c2ed0cd: startup date [Thu Apr 04 14:41:25 CST 2019]; root of context hierarchy
+2019-04-04 14:41:25.970  WARN 36900 --- [main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'recruitMapper' and 'com.hao.employment.dao.RecruitMapper' mapperInterface. Bean already defined with the same name!
+2019-04-04 14:41:25.972  WARN 36900 --- [main] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'resumeMapper' and 'com.hao.employment.dao.ResumeMapper' mapperInterface. Bean already defined with the same name!
+2019-04-04 14:41:25.972  WARN 36900 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.hao.employment]' package. Please check your configuration.
+2019-04-04 14:41:26.623  INFO 36900 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2019-04-04 14:41:26.630  INFO 36900 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-04 14:41:26.631  INFO 36900 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.23
+2019-04-04 14:41:26.705  INFO 36900 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-04 14:41:26.705  INFO 36900 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1358 ms
+2019-04-04 14:41:26.853  INFO 36900 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2019-04-04 14:41:26.857  INFO 36900 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-04 14:41:26.858  INFO 36900 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-04 14:41:26.858  INFO 36900 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-04 14:41:26.858  INFO 36900 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-04 14:41:27.450  INFO 36900 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6c2ed0cd: startup date [Thu Apr 04 14:41:25 CST 2019]; root of context hierarchy
+2019-04-04 14:41:27.512  INFO 36900 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/recruit/publish],methods=[POST]}" onto public void com.hao.employment.web.RecruitController.publishRecruit()
+2019-04-04 14:41:27.515  INFO 36900 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/resume/getResumeReport],methods=[POST]}" onto public com.hao.employment.bean.pojo.ResultPojo com.hao.employment.web.ResumeController.getResumeReport(com.hao.employment.bean.param.ResumeSearchParams)
+2019-04-04 14:41:27.518  INFO 36900 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-04 14:41:27.519  INFO 36900 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-04 14:41:27.557  INFO 36900 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-04 14:41:27.557  INFO 36900 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-04 14:41:27.612  INFO 36900 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-04 14:41:27.658  WARN 36900 --- [main] .t.AbstractTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-04-04 14:41:27.945  INFO 36900 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-04-04 14:41:27.945  INFO 36900 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-04-04 14:41:27.946  INFO 36900 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-04-04 14:41:27.947  INFO 36900 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-04-04 14:41:28.246  INFO 36900 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-04 14:41:28.366  INFO 36900 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2019-04-04 14:41:28.370  INFO 36900 --- [main] com.hao.employment.Application           : Started Application in 3.885 seconds (JVM running for 4.877)
+2019-04-04 14:41:34.537  INFO 36900 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-04 14:41:34.538  INFO 36900 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-04 14:41:34.557  INFO 36900 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 18 ms
+2019-04-04 14:41:36.200 DEBUG 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataCount  : ==>  Preparing: select count(1) from resume_info as stu WHERE stu.major=? AND stu.education_back=? 
+2019-04-04 14:41:36.213 DEBUG 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataCount  : ==> Parameters: 软件工程(String), 本科(String)
+2019-04-04 14:41:36.221 TRACE 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataCount  : <==    Columns: count(1)
+2019-04-04 14:41:36.221 TRACE 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataCount  : <==        Row: 3
+2019-04-04 14:41:36.222 DEBUG 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataCount  : <==      Total: 1
+2019-04-04 14:41:36.407 DEBUG 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataList   : ==>  Preparing: select * from resume_info as stu WHERE stu.major=? AND stu.education_back=? limit ?,? 
+2019-04-04 14:41:36.407 DEBUG 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataList   : ==> Parameters: 软件工程(String), 本科(String), 0(Integer), 2(Integer)
+2019-04-04 14:41:36.411 TRACE 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataList   : <==    Columns: id, name, age, sex, birth, nation, politics_status, major, depart, education_back, education_length, training_mode, origin, graduation_time, job_intention, languages, language_level, computer_level, phone, email, address, message, is_publish, delivered_com, is_signed
+2019-04-04 14:41:36.415 TRACE 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataList   : <==        Row: 12, 程云起, 23, 男, 1996-03-21, 汉族, 团员, 软件工程, 计算机系, 本科, 4, 全日制, 湖南, 2018-06-07, 软件工程师, 英语, CET-6, 计算机二级, 13464387870, xksndw@165.com, 上海市浦东新区南京路121号, 尊敬的领导：
+
+　　您好！
+
+　　首先十分感谢您在百忙中抽空来阅读我自荐信，您的关心将是我不断进步的动力！
+
+　　我叫欧阳华，此刻就读于江西理工大学经济管理学院市场营销专业。江西理工大学是一个十分普通的院校，但是我相信“天道酬勤，韬光养晦；志存高远，职责为先我”的人生理念，在大学的生活中不断地认识自我，完善自我。
+
+　　大一，我透过竞选当选市场营销100班第一任班长。班长的生涯让我学会了自信和乐观，锻炼了我的职责心，让我学会了忍耐，必须程度上磨平了我的浮躁。我还透过自己三次面试当上了演讲与口才协会培训小组，这协会改变我了大学的轨迹，它让我开始对生活充满激情和期盼。大一，一个盲目而又充实的一年，我并没有因为我们的工作而落下学习，由于我开始喜欢上自己的专业，加上我开始懂得了怎样去应对大学的专业学习，我拿到了校园二等奖学金。
+
+　　大二，我加入社团联合会，担任纪检部副部长。而在演讲与口才协会，我担任了常务副会长，在这个协会的这一年让我体会到了一个创业者的艰辛和痛苦。我开始学会团队协作，开始学会思考和总结问题。也正是这一年让我开始如何认识自我和如何完善自我。
+
+　　大三的生活开始不久，但我已经体验到了它的挑战和珍贵。我就任了演讲与口才协会第十任会长，这个协会将迎来她的十周年庆典，这是我一个机会和挑战。我对专业充满兴趣，我会理解她，认识她，运用她。我对生活充满激情，我会充实她，利用她，热爱她。
+
+　　我将“职责为先”，一向在我的生活上体现我的人生价值。我会不断提高自身修养，努力完善自我，争取到达贵单位的就职要求。我愿与贵单位同事携手共进，共创公司完美未来！
+
+　　再次感谢您在百忙之中阅读我的自荐信，祝您工作顺利，身体健康！
+
+　　敬礼
+
+　　自荐人：xxx, null, null, null
+2019-04-04 14:41:36.420 TRACE 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataList   : <==        Row: 22, 朱嘉辉, 26, 女, 1996-03-21, 汉族, 团员, 软件工程, 计算机系, 本科, 4, 全日制, 云南, 2018-06-07, 软件工程师, 英语, CET-4, 计算机二级, 13464387880, xksndw@170.com, 上海市浦东新区南京路131号, 尊敬的领导：
+
+　　您好！
+
+　　首先十分感谢您在百忙中抽空来阅读我自荐信，您的关心将是我不断进步的动力！
+
+　　我叫欧阳华，此刻就读于江西理工大学经济管理学院市场营销专业。江西理工大学是一个十分普通的院校，但是我相信“天道酬勤，韬光养晦；志存高远，职责为先我”的人生理念，在大学的生活中不断地认识自我，完善自我。
+
+　　大一，我透过竞选当选市场营销110班第一任班长。班长的生涯让我学会了自信和乐观，锻炼了我的职责心，让我学会了忍耐，必须程度上磨平了我的浮躁。我还透过自己三次面试当上了演讲与口才协会培训小组, null, null, null
+2019-04-04 14:41:36.421 DEBUG 36900 --- [http-nio-8080-exec-1] c.h.e.d.ResumeMapper.getResumeDataList   : <==      Total: 2
