@@ -1,6 +1,9 @@
 package com.hao.employment.service;
 
+import com.hao.employment.bean.entry.SysMenu;
+import com.hao.employment.bean.entry.SysUser;
 import com.hao.employment.bean.param.UserLoginParams;
+import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.enums.ResultStatusEnum;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -12,6 +15,9 @@ import java.util.List;
 @Service
 @Component
 public interface UserService {
-    List<String> getAllUserName();
+    ResultPojo login(UserLoginParams userLoginParams);
+    List<String> getAllUserAccount();
     int loginValidate(UserLoginParams userLoginParams);
+    SysUser getUserEntityByLoginAccount(String loginName);
+    List<SysMenu> gerCurUserMenuList(String loginAccount);
 }

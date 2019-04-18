@@ -23,7 +23,7 @@ public interface RecruitMapper {
     @Select("<script> select count(1) from recruitment_info as com " +" <where> " +
             "<if test=\"major != null and major != '' \"> AND com.major=#{major}</if> " +
             "<if test=\"educationBack != null and educationBack != '' \"> AND com.education_back=#{educationBack}</if> " +
-            "</where> limit #{offset},#{pageSize} </script> ")
+            "</where> </script> ")
     Long getRecruitmentDataCount(RecruitSearchParams recruitSearchParams);
 
     @Select("<script> select * from recruitment_info as com " +" <where> " +

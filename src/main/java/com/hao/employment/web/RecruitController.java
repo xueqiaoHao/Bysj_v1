@@ -33,10 +33,11 @@ public class RecruitController {
 
     /*发布招聘*/
     @ResponseBody
-    @RequestMapping(value = "publish",method = RequestMethod.POST)
-    public void publishRecruit(@RequestBody Recruitment recruitment){
+    @RequestMapping(value = "publishRecruitment",method = RequestMethod.POST)
+    public String publishRecruit(@RequestBody Recruitment recruitment){
         recruitment.setPublishTime(DateUtil.getCurrentTimeByString());
         recruitService.publishRecruitment(recruitment);
+        return "招聘信息发布成功";
     }
     /*
     * 查看招聘信息*/

@@ -6,6 +6,8 @@ import lombok.Data;
   @date 2019/4/3 17:31*/
 @Data
 public class ResumeSearchParams {
+    private String currentUserName;
+    private String currentUserRole;
     private Integer pageSize;
     private Integer pageNumber;
     private Integer offset;
@@ -15,6 +17,7 @@ public class ResumeSearchParams {
     private String educationBack;
     /*是否公开*/
     private int isPublish;
+    //在前端把投递公司的这个值设定成userName
     /*投递公司*/
     private String deliveredCom;
     public Integer getOffset() {
@@ -24,7 +27,9 @@ public class ResumeSearchParams {
     @Override
     public String toString() {
         return "ResumeSearchParams{" +
-                "pageSize=" + pageSize +
+                "currentUserName='" + currentUserName + '\'' +
+                ", currentUserRole='" + currentUserRole + '\'' +
+                ", pageSize=" + pageSize +
                 ", pageNumber=" + pageNumber +
                 ", offset=" + offset +
                 ", major='" + major + '\'' +

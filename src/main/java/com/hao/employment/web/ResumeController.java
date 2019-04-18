@@ -3,7 +3,9 @@ package com.hao.employment.web;
 
 import com.hao.employment.bean.param.ResumeSearchParams;
 import com.hao.employment.bean.pojo.ResultPojo;
+import com.hao.employment.dao.UserMapper;
 import com.hao.employment.service.ResumeService;
+import com.hao.employment.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,12 +26,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ResumeController {
     @Autowired
     ResumeService resumeService;
+    @Autowired
+    RoleService roleService;
     /*查看简历
     * --简历在此被查看*/
     @ResponseBody
         @RequestMapping(value = "getResumeReport",method = RequestMethod.POST)
     public ResultPojo getResumeReport(@RequestBody ResumeSearchParams resumeSearchParams){
         log.info(resumeSearchParams.toString());
+        resumeSearchParams.setCurrentUserRole(roleService.getUserRole(resumeSearchParams.getCurrentUserName().toString()));
+        if(resumeSearchParams.getCurrentUserRole().equals("A")){
+            resumeSearchParams.setDeliveredCom(null);
+        }else {
+            resumeSearchParams.setDeliveredCom(resumeSearchParams.getCurrentUserName());
+        }
         ResultPojo resultDto=resumeService.getResumePageData(resumeSearchParams);
         return resultDto;
     }

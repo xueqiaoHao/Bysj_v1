@@ -28,6 +28,8 @@ public class Recruitment {
     private String  educationBack;
     @Column(name = "people_nums")
     private String  peopleNums;
+    @Column(name = "salary")
+    private String salary;
     @Column(name = "job_way")
     private String  jobWay;
     @Column(name = "job_info")
@@ -37,29 +39,5 @@ public class Recruitment {
     @Column(name = "talk_time")
     private String  talkTime;
     @Column(name = "publish_time")
-
     private String  publishTime;
-
-    @Override
-    public String toString() {
-        return "Recruitment{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", nature='" + nature + '\'' +
-                ", type='" + type + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", depart='" + depart + '\'' +
-                ", phone='" + phone + '\'' +
-                ", info='" + info + '\'' +
-                ", major='" + major + '\'' +
-                ", educationBack='" + educationBack + '\'' +
-                ", peopleNums='" + peopleNums + '\'' +
-                ", jobWay='" + jobWay + '\'' +
-                ", jobInfo='" + jobInfo + '\'' +
-                ", careerTalk='" + careerTalk + '\'' +
-                ", talkTime='" + talkTime + '\'' +
-                ", publishTime='" + publishTime + '\'' +
-                '}';
-    }
 }

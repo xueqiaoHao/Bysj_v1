@@ -6,13 +6,13 @@ import lombok.Data;
   @date 2019/4/10 16:39*/
 @Data
 public class UserLoginParams {
-    String userName;
+    String loginAccount;
     String password;
 
     @Override
     public String toString() {
         return "UserLoginParams{" +
-                "userName='" + userName + '\'' +
+                "loginAccount='" + loginAccount + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

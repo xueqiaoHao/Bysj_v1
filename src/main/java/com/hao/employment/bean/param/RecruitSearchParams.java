@@ -10,6 +10,8 @@ public class RecruitSearchParams {
     private Integer pageNumber;
     private Integer offset;
     /*查询招聘信息的传递进来的参数*/
+    /*薪资待遇*/
+    private String salary;
     /*安照专业*/
     private String major;
     /*学历*/
@@ -17,5 +19,4 @@ public class RecruitSearchParams {
     public Integer getOffset() {
         return (this.pageNumber-1)*this.pageSize;
     }
-
 }
