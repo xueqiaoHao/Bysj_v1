@@ -20,14 +20,14 @@ public interface ResumeMapper {
     @Select("<script> select count(1) from resume_info as stu " +" <where> " +
             "<if test=\"major != null and major != '' \"> AND stu.major=#{major}</if> " +
             "<if test=\"educationBack != null and educationBack != '' \"> AND stu.education_back=#{educationBack}</if> " +
-            "<if test=\"isPublish != null and isPublish != '' \"> AND stu.is_publish=#{isPublish}</if> " +
+            "<if test=\"isPublic != null and isPublic != '' \"> AND stu.is_public=#{isPublic}</if> " +
             "<if test=\"deliveredCom != null and deliveredCom != '' \"> AND stu.delivered_com like CONCAT('%',#{deliveredCom},'%')</if> " +
             "</where> </script> ")
     long getResumeDataCount(ResumeSearchParams resumeSearchParams);
     @Select("<script> select * from resume_info as stu " +" <where> " +
             "<if test=\"major != null and major != '' \"> AND stu.major=#{major}</if> " +
             "<if test=\"educationBack != null and educationBack != '' \"> AND stu.education_back=#{educationBack}</if> " +
-            "<if test=\"isPublish != null and isPublish != '' \"> AND stu.is_publish=#{isPublish}</if> " +
+            "<if test=\"isPublic != null and isPublic != '' \"> AND stu.is_public=#{isPublic}</if> " +
             "<if test=\"deliveredCom != null and deliveredCom != '' \"> AND stu.delivered_com like CONCAT('%',#{deliveredCom},'%')</if> " +
             "</where> limit #{offset},#{pageSize} </script> ")
     List<Resume> getResumeDataList(ResumeSearchParams resumeSearchParams);

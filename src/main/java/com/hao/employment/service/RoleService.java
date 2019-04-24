@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
   @date 2019/4/17 16:18*/
 @Service
 public interface RoleService {
-    //根据用户名拿到此用户名对应的user_role
-    String getUserRole(String userName);
+    //根据用户账号拿到此用户名对应的user_role
+    String getUserRole(String userAccount);
 }

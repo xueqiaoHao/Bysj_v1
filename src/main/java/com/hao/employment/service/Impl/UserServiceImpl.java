@@ -61,9 +61,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<SysMenu> gerCurUserMenuList(String loginAccount) {
+//        log.info(loginAccount);
         //通过账号拿到userId
         Integer userId=getUserEntityByLoginAccount(loginAccount).getId();
-        log.info("userId"+userId.toString());
+//        log.info("userId"+userId.toString());
         //拿到所有的菜单
         List<SysMenu> sysMenuList=userMapper.getUserMenuListByAccount(userId);
         //判断出其中的父菜单

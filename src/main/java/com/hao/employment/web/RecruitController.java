@@ -23,6 +23,7 @@ import java.util.Date;
 * 招聘
 * 公司发布招聘信息
 * 学生、管理员查看招聘信息
+* 管理员查看招聘信息统计结果报告
 * */
 @Slf4j
 @Controller
@@ -31,7 +32,8 @@ public class RecruitController {
     @Autowired
     RecruitService recruitService;
 
-    /*发布招聘*/
+    /*
+    功能一：发布招聘*/
     @ResponseBody
     @RequestMapping(value = "publishRecruitment",method = RequestMethod.POST)
     public String publishRecruit(@RequestBody Recruitment recruitment){
@@ -39,12 +41,24 @@ public class RecruitController {
         recruitService.publishRecruitment(recruitment);
         return "招聘信息发布成功";
     }
+
     /*
-    * 查看招聘信息*/
+    * 功能二：查看招聘信息*/
     @ResponseBody
     @RequestMapping(value = "getRecruitment",method = RequestMethod.POST)
     public ResultPojo getRecruitment(@RequestBody RecruitSearchParams recruitSearchParams){
         ResultPojo resultDto=recruitService.getRecruitmentPageData(recruitSearchParams);
         return resultDto;
+    }
+
+    /*
+    * 功能三：管理员查看招聘信息分析报告
+    * 按照常理应该是什么都不用传，直接去后端查然后拿结果数据就行
+    * */
+    @ResponseBody
+    @RequestMapping(value = "getRecruitmentAnalyse",method = RequestMethod.POST)
+    public ResultPojo getRecruitmentAnalyse(){
+        ResultPojo resultPojo=recruitService.getRecruitmentAnalyse();
+        return resultPojo;
     }
 }

@@ -18,4 +18,8 @@ public interface RecruitService {
     void publishRecruitment(Recruitment recruitment);
     /*查看招聘信息*/
     ResultPojo getRecruitmentPageData(RecruitSearchParams recruitSearchParams);
+    /*
+    * 查看招聘信息统计结果
+    * */
+    ResultPojo getRecruitmentAnalyse();
 }

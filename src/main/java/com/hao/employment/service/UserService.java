@@ -18,6 +18,6 @@ public interface UserService {
     ResultPojo login(UserLoginParams userLoginParams);
     List<String> getAllUserAccount();
     int loginValidate(UserLoginParams userLoginParams);
-    SysUser getUserEntityByLoginAccount(String loginName);
+    SysUser getUserEntityByLoginAccount(String loginAccount);
     List<SysMenu> gerCurUserMenuList(String loginAccount);
 }

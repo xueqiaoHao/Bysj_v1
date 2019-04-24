@@ -6,6 +6,7 @@ import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.dao.UserMapper;
 import com.hao.employment.service.ResumeService;
 import com.hao.employment.service.RoleService;
+import com.hao.employment.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,24 +29,40 @@ public class ResumeController {
     ResumeService resumeService;
     @Autowired
     RoleService roleService;
+    @Autowired
+    UserService userService;
     /*查看简历
-    * --简历在此被查看*/
+    * --简历在此被查看
+    * 服务两种人，管理员和公司，若是公司就把public指定为1
+    * */
     @ResponseBody
         @RequestMapping(value = "getResumeReport",method = RequestMethod.POST)
     public ResultPojo getResumeReport(@RequestBody ResumeSearchParams resumeSearchParams){
         log.info(resumeSearchParams.toString());
-        resumeSearchParams.setCurrentUserRole(roleService.getUserRole(resumeSearchParams.getCurrentUserName().toString()));
-        if(resumeSearchParams.getCurrentUserRole().equals("A")){
-            resumeSearchParams.setDeliveredCom(null);
-        }else {
-            resumeSearchParams.setDeliveredCom(resumeSearchParams.getCurrentUserName());
+        if(resumeSearchParams.getCurrentUserAccount().toString()==null || (resumeSearchParams.getCurrentUserAccount().toString().trim().length()==0)){
+            ResultPojo resultDto=new ResultPojo();
+            String error="请输入账号";
+            resultDto.setMessage(error);
+            return resultDto;
+        }
+        resumeSearchParams.setCurrentUserRole(roleService.getUserRole(resumeSearchParams.getCurrentUserAccount().toString()));
+        log.info("赋予角色后"+resumeSearchParams.toString());
+        if(resumeSearchParams.getCurrentUserRole().equals("3")){
+            //设定投递公司为登录的账号对应的用户名
+            resumeSearchParams.setIsPublic(1);
+            /*
+            * 先拿实体再拿用户名
+            * */
         }
         ResultPojo resultDto=resumeService.getResumePageData(resumeSearchParams);
         return resultDto;
     }
     @ResponseBody
-    @RequestMapping(value = "test",method = RequestMethod.GET)
-    public String test(){
-        return "后端数据";
+    @RequestMapping(value = "getDeliveredResume",method = RequestMethod.POST)
+    public ResultPojo getDeliveredResume(@RequestBody ResumeSearchParams resumeSearchParams){
+        String curUserName=userService.getUserEntityByLoginAccount(resumeSearchParams.getCurrentUserAccount()).getUserName();
+        resumeSearchParams.setDeliveredCom(curUserName);
+        ResultPojo resultDto=resumeService.getResumePageData(resumeSearchParams);
+        return resultDto;
     }
 }

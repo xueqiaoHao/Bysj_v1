@@ -17,8 +17,8 @@ public class RoleServiceImpl implements RoleService {
     UserMapper userMapper;
 
     @Override
-    public String getUserRole(String userName) {
-        log.info(userName);
-        return userMapper.getUserIdentity(userName);
+    public String getUserRole(String userAccount) {
+        log.info(userAccount);
+        return userMapper.getUserIdentity(userAccount);
     }
 }

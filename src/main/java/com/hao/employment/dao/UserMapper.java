@@ -17,17 +17,20 @@ public interface UserMapper {
     /*登陆验证*/
     @Select("select account from sys_user")
     List<String> getAllUserAccount();
-    /*有用户名拿密码*/
+    /*有登录账户拿密码*/
     @Select("<script> select password from sys_user " +" <where> " +
-            "<if test=\"userName != null and userName != '' \"> AND user_name=#{userName}</if> " +
+            "<if test=\"loginAccount != null and loginAccount != '' \"> AND account=#{loginAccount}</if> " +
             "</where> </script>")
     String loginValidate(UserLoginParams userLoginParams);
 
-    /*获取用户身份类型*/
-    @Select("<script> select user_role from sys_user " +" <where> " +
-            "<if test=\"_parameter != null and _parameter != '' \"> AND user_name=#{userName}</if> " +
-            "</where> </script>")
-    String getUserIdentity(String userName);
+    /*获取用户身份类型
+    * (1)由account去拿user_id
+    * (2)由user_id去user_role里拿role_id
+    * */
+    @Select("<script> select ur.role_id from sys_user u,sys_user_role ur " +
+            "where u.id=ur.user_id and  u.account=#{userAccount} " +
+            " </script>")
+    String getUserIdentity(String userAccount);
 
     /*拿到账号去找用户实体*/
     @Select("<script> select * from sys_user where account=#{userAccount} </script>")
@@ -40,14 +43,8 @@ public interface UserMapper {
     * (4)通过menu_id去表里面取出来menu实体 select menu from sys_menu where id=                       sys_menu
     * */
     @Select("<script> select m.* from sys_menu m,sys_role_menu rm,sys_user_role ur " +
-            "where m.id=rm.menu_id and rm.role_id=ur.role_id and ur.user_id=#{userId}" +
+            "where m.id=rm.menu_id and rm.role_id=ur.role_id and ur.user_id=#{userId} " +
             " </script>")
     List<SysMenu> getUserMenuListByAccount(Integer userId);
-
-    /*通过所有的菜单Id取拿所有的父级菜单*/
-    @Select("<script> select m.* from sys_menu m " +
-            "where m.id in (#{menuIds})" +
-            " </script>")
-    List<SysMenu> getParentMenuList(String menuIds);
 
 }
