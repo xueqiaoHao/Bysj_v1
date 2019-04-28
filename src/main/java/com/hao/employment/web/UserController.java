@@ -2,6 +2,7 @@ package com.hao.employment.web;
 
 import com.hao.employment.bean.entry.SysMenu;
 import com.hao.employment.bean.entry.SysUser;
+import com.hao.employment.bean.param.SearchParams;
 import com.hao.employment.bean.param.UserLoginParams;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.enums.ResultStatusEnum;
@@ -56,5 +57,25 @@ public class UserController {
         resultPojo.setMessage(ResultStatusEnum.SUCCESS.getMessage());
         resultPojo.setData(sysMenuList);
         return resultPojo;
+    }
+    @ResponseBody
+    @RequestMapping(value = "getAccountList")
+    public ResultPojo getAccountList(@RequestBody SearchParams searchParams){
+        log.info(searchParams.toString());
+        ResultPojo resultPojo =userService.getAccountList(searchParams);
+        return resultPojo;
+    }
+    /*添加用户*/
+    @ResponseBody
+    @RequestMapping(value = "addUser")
+    public void addUser(@RequestBody SysUser sysUser){
+       userService.addUserEntity(sysUser);
+    }
+    /*删除*/
+    @ResponseBody
+    @RequestMapping(value = "deleteUser")
+    public void deleteUser(@RequestBody SysUser sysUser){
+        log.info("id:"+sysUser.getId());
+        userService.deleteUserEntity(sysUser);
     }
 }

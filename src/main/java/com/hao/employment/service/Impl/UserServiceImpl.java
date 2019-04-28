@@ -2,7 +2,9 @@ package com.hao.employment.service.Impl;
 
 import com.hao.employment.bean.entry.SysMenu;
 import com.hao.employment.bean.entry.SysUser;
+import com.hao.employment.bean.param.SearchParams;
 import com.hao.employment.bean.param.UserLoginParams;
+import com.hao.employment.bean.pojo.PageDataPojo;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.enums.ResultStatusEnum;
 import com.hao.employment.dao.UserMapper;
@@ -90,6 +92,22 @@ public class UserServiceImpl implements UserService {
         return resultMenuList;
     }
 
+    @Override
+    public ResultPojo getAccountList(SearchParams searchParams) {
+        List<SysUser> sysUserList=userMapper.getAccountList(searchParams);
+        Long total=userMapper.getAccountNum();
+        PageDataPojo pageDataPojo=new PageDataPojo();
+        pageDataPojo.setDataList(sysUserList);
+        pageDataPojo.setTotal(total);
+        pageDataPojo.setPageNumber(searchParams.getPageNumber());
+        pageDataPojo.setPageSize(searchParams.getPageSize());
+        ResultPojo resultPojo=new ResultPojo();
+        resultPojo.setStatus(ResultStatusEnum.SUCCESS.getCode());
+        resultPojo.setMessage(ResultStatusEnum.SUCCESS.getMessage());
+        resultPojo.setData(pageDataPojo);
+        return resultPojo;
+    }
+
     public  static List<SysMenu> getParentMenu(List<SysMenu> sysMenuList){
         List<SysMenu> parentMenuList=new ArrayList<SysMenu>();
         for (SysMenu menu:sysMenuList
@@ -109,5 +127,14 @@ public class UserServiceImpl implements UserService {
             }
         }
         return childMenuList;
+    }
+
+    /*添加用户*/
+    public void addUserEntity(SysUser sysUser){
+        userMapper.addUser(sysUser);
+    }
+    /*删除用户*/
+    public void deleteUserEntity(SysUser sysUser){
+        userMapper.deleteUser(sysUser);
     }
 }

@@ -2,6 +2,7 @@ package com.hao.employment.service;
 
 import com.hao.employment.bean.entry.SysMenu;
 import com.hao.employment.bean.entry.SysUser;
+import com.hao.employment.bean.param.SearchParams;
 import com.hao.employment.bean.param.UserLoginParams;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.enums.ResultStatusEnum;
@@ -20,4 +21,7 @@ public interface UserService {
     int loginValidate(UserLoginParams userLoginParams);
     SysUser getUserEntityByLoginAccount(String loginAccount);
     List<SysMenu> gerCurUserMenuList(String loginAccount);
+    ResultPojo getAccountList(SearchParams searchParams);
+    void addUserEntity(SysUser sysUser);
+    void deleteUserEntity(SysUser sysUser);
 }

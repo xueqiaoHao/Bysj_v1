@@ -2,7 +2,10 @@ package com.hao.employment.dao;
 
 import com.hao.employment.bean.entry.SysMenu;
 import com.hao.employment.bean.entry.SysUser;
+import com.hao.employment.bean.param.SearchParams;
 import com.hao.employment.bean.param.UserLoginParams;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
@@ -47,4 +50,24 @@ public interface UserMapper {
             " </script>")
     List<SysMenu> getUserMenuListByAccount(Integer userId);
 
+    /*拿到所有的账号表数据*/
+    @Select("<script> select * from sys_user limit #{offset},#{pageSize} " +
+            " </script>")
+    List<SysUser> getAccountList(SearchParams searchParams);
+
+    @Select("<script> select count(1) from sys_user </script>")
+    Long getAccountNum();
+
+    /*新建用户
+    * 1、用户名
+    * 2、账号名
+    * 3、密码
+    * 4、身份类型
+    * */
+    @Insert("insert into sys_user (user_name,account,password,email) values (" +
+            "#{userName}, #{account}, #{password}, #{email})")
+    void addUser(SysUser sysUser);
+    /*删除用户*/
+    @Delete("delete from sys_user where id= #{id}")
+    void deleteUser(SysUser sysUser);
 }
