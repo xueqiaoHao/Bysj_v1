@@ -65,4 +65,13 @@ public class ResumeController {
         ResultPojo resultDto=resumeService.getResumePageData(resumeSearchParams);
         return resultDto;
     }
+
+    /*查看签约率*/
+    @ResponseBody
+    @RequestMapping(value = "getSignedNum",method = RequestMethod.POST)
+    public ResultPojo getSignedNum(@RequestBody ResumeSearchParams resumeSearchParams){
+        log.info(resumeSearchParams.toString());
+        ResultPojo resultDto=resumeService.getSignedPercent(resumeSearchParams);
+        return resultDto;
+    }
 }

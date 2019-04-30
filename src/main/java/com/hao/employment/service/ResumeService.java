@@ -18,4 +18,7 @@ public interface ResumeService {
 
     /*查看简历*/
     ResultPojo getResumePageData(ResumeSearchParams resumeSearchParams);
+
+    /*查看签约率*/
+    ResultPojo getSignedPercent(ResumeSearchParams resumeSearchParams);
 }

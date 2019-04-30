@@ -5,18 +5,24 @@ import com.hao.employment.bean.param.ResumeSearchParams;
 import com.hao.employment.bean.pojo.PageDataPojo;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.enums.ResultStatusEnum;
+import com.hao.employment.common.util.DataHandleUtil;
 import com.hao.employment.dao.ResumeMapper;
 import com.hao.employment.service.ResumeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.Log;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 
 /*@author haoxueqiao
   @date 2019/4/3 16:48*/
 @Service
 @Component
+@Slf4j
 public class ResumeServiceImpl implements ResumeService {
     @Autowired
     ResumeMapper resumeMapper;
@@ -34,5 +40,17 @@ public class ResumeServiceImpl implements ResumeService {
         resultPojo.setMessage(ResultStatusEnum.SUCCESS.getMessage());
         resultPojo.setData(pageDataPojo);
         return resultPojo;
-    };
+    }
+
+    @Override
+    public ResultPojo getSignedPercent(ResumeSearchParams resumeSearchParams) {
+        int total= ((int) resumeMapper.getResumeDataCount(resumeSearchParams));
+        int signedNum=resumeMapper.getSignedNum();
+        Double result=DataHandleUtil.divisionInt(signedNum,total);
+        ResultPojo resultPojo=new ResultPojo();
+        resultPojo.setData(result);
+        return resultPojo;
+    }
+
+    ;
 }

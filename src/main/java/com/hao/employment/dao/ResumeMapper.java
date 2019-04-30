@@ -35,4 +35,12 @@ public interface ResumeMapper {
     /*发布简历
     * 简历保存
     * 简历投递*/
+
+
+    /*计算签约率
+    * 签约人数/总人数
+    * */
+    @Select("select count(1) from resume_info where is_signed=1")
+    int getSignedNum();
+
 }

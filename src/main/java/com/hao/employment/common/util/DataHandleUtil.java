@@ -48,7 +48,14 @@ public class DataHandleUtil {
         bigDecimal.divide(new BigDecimal("100"), 4, BigDecimal.ROUND_HALF_UP);
         return bigDecimal;
     }
-
+    /*两整数相除得小数并规定小数点位数    --->>最终结果*100返回*/
+    public static Double divisionInt(int a , int b){
+        String format="0.00";
+        DecimalFormat dec = new DecimalFormat(format);
+        String resultStr = dec.format((double) a / b*100);
+        Double result=Double.parseDouble(resultStr);
+        return result;
+    }
     public static void main(String[] args) {
         String result=division(25,200);
         System.out.println(result);

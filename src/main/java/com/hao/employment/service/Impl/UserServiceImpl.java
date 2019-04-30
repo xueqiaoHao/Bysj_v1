@@ -137,4 +137,5 @@ public class UserServiceImpl implements UserService {
     public void deleteUserEntity(SysUser sysUser){
         userMapper.deleteUser(sysUser);
     }
+
 }
