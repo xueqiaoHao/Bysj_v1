@@ -58,6 +58,7 @@ public class RecruitController {
     @ResponseBody
     @RequestMapping(value = "getRecruitmentAnalyse",method = RequestMethod.POST)
     public ResultPojo getRecruitmentAnalyse(){
+        log.info("请求分析数据getRecruitmentAnalyse");
         ResultPojo resultPojo=recruitService.getRecruitmentAnalyse();
         return resultPojo;
     }

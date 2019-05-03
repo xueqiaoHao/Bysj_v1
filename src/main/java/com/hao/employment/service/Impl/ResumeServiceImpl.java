@@ -1,6 +1,7 @@
 package com.hao.employment.service.Impl;
 
 import com.hao.employment.bean.entry.Resume;
+import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
 import com.hao.employment.bean.pojo.PageDataPojo;
 import com.hao.employment.bean.pojo.ResultPojo;
@@ -49,6 +50,23 @@ public class ResumeServiceImpl implements ResumeService {
         Double result=DataHandleUtil.divisionInt(signedNum,total);
         ResultPojo resultPojo=new ResultPojo();
         resultPojo.setData(result);
+        return resultPojo;
+    }
+
+    @Override
+    public ResultPojo deliverResume(DeliverResumeParams deliverResumeParams) {
+        /*先判断是否是初次投递*/
+        String deliveredCom=resumeMapper.isDelivered(deliverResumeParams);
+        log.info("已投递公司总览:"+deliveredCom);
+        if(deliveredCom==null||deliveredCom.trim().length()==0||deliveredCom==""){
+            resumeMapper.updateDeliverCom(deliverResumeParams);
+        }else {
+            resumeMapper.updateDeliverComAgain(deliverResumeParams);
+        }
+
+        ResultPojo resultPojo=new ResultPojo();
+        resultPojo.setStatus(ResultStatusEnum.SUCCESS.getCode());
+        resultPojo.setMessage(ResultStatusEnum.SUCCESS.getMessage());
         return resultPojo;
     }
 

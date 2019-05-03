@@ -1,6 +1,7 @@
 package com.hao.employment.web;
 
 
+import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.dao.UserMapper;
@@ -72,6 +73,17 @@ public class ResumeController {
     public ResultPojo getSignedNum(@RequestBody ResumeSearchParams resumeSearchParams){
         log.info(resumeSearchParams.toString());
         ResultPojo resultDto=resumeService.getSignedPercent(resumeSearchParams);
+        return resultDto;
+    }
+    /*简历投递
+    * 将对应公司的名字写入deliveredCom
+    * */
+    @ResponseBody
+    @RequestMapping(value = "deliverResume",method = RequestMethod.POST)
+    public ResultPojo deliverResume(@RequestBody DeliverResumeParams deliverResumeParams){
+        log.info(deliverResumeParams.toString());
+//        根据用户名去表里查对应的那条简历
+        ResultPojo resultDto=resumeService.deliverResume(deliverResumeParams);
         return resultDto;
     }
 }

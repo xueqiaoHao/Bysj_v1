@@ -1,5 +1,6 @@
 package com.hao.employment.service;
 
+import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
 import com.hao.employment.bean.pojo.ResultPojo;
 import org.springframework.stereotype.Component;
@@ -21,4 +22,6 @@ public interface ResumeService {
 
     /*查看签约率*/
     ResultPojo getSignedPercent(ResumeSearchParams resumeSearchParams);
+    /*投递简历*/
+    ResultPojo deliverResume(DeliverResumeParams deliverResumeParams);
 }

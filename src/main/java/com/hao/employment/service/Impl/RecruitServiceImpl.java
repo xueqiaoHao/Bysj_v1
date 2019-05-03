@@ -61,16 +61,6 @@ public class RecruitServiceImpl implements RecruitService {
         List<RecruitEvePojo> recruitEvePojoList=recruitMapper.getEveNumbersByMajor();
 //        int total=recruitMapper.getAllRecruitNumbers();
         ResultPojo resultPojo=new ResultPojo();
-//        List<RecruitEvePojo> resultPercentList=new ArrayList<RecruitEvePojo>();
-//        /*
-//        * 我需要做的是把每一门的都拿出来去除以这个total
-//        * */
-//        for (RecruitEvePojo recruitEvePojo:recruitEvePojoList
-//             ) {
-//        String resultPercent= DataHandleUtil.division(recruitEvePojo.getNum(),total);
-//        recruitEvePojo.setPercent(resultPercent);
-//        resultPercentList.add(recruitEvePojo);
-//        }
         resultPojo.setStatus(ResultStatusEnum.SUCCESS.getCode());
         resultPojo.setMessage(ResultStatusEnum.SUCCESS.getMessage());
         resultPojo.setData(recruitEvePojoList);
