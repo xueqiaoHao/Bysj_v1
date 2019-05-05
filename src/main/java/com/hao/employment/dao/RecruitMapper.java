@@ -45,11 +45,11 @@ public interface RecruitMapper {
     /*查看招聘信息的统计结果
     * (1)拿出所有专业的招聘人数排行，包括专业名和招收人数
     * (2)拿出所有的薪资待遇的统计排行
-    *
+    *   (3)查看git
     * */
-    @Select("<script>SELECT sum(people_nums) as num,major " +
+    @Select("<script>SELECT sum(people_nums) as `value`, major `name` " +
             "from recruitment_info GROUP BY major " +
-            "ORDER BY num desc " +
+            "ORDER BY `value` desc " +
             "</script> ")
     List<RecruitEvePojo> getEveNumbersByMajor();
     @Select("<script> SELECT sum(people_nums) FROM recruitment_info"+

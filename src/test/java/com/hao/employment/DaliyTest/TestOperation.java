@@ -16,7 +16,10 @@ public class TestOperation {
         DecimalFormat dec = new DecimalFormat(format);
         String c =  dec.format((double) a / b*100);
         Double d=Double.parseDouble(c);
-        System.out.println(d);
+//        System.out.println(d);
+        String fileName="abc.txt";
+        String fileType = fileName.substring(fileName.lastIndexOf("c"));
+        System.out.println(fileType);
     }
 
 

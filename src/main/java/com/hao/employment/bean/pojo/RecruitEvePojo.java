@@ -9,7 +9,7 @@ import lombok.Data;
   */
 @Data
 public class RecruitEvePojo {
-    int num;
-    String major;
+    int value;
+    String name;
 
 }

@@ -59,7 +59,6 @@ public class RecruitServiceImpl implements RecruitService {
     @Override
     public ResultPojo getRecruitmentAnalyse() {
         List<RecruitEvePojo> recruitEvePojoList=recruitMapper.getEveNumbersByMajor();
-//        int total=recruitMapper.getAllRecruitNumbers();
         ResultPojo resultPojo=new ResultPojo();
         resultPojo.setStatus(ResultStatusEnum.SUCCESS.getCode());
         resultPojo.setMessage(ResultStatusEnum.SUCCESS.getMessage());
