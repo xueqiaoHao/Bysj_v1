@@ -36,7 +36,7 @@ public enum ResultStatusEnum {
      * 返回状态5 帐号密码不匹配
      */
     LOGIN_WRONG_PASSWORD(5,"帐号密码不匹配"),
-
+    ACCOUNT_NOT_FOUND(6,"账号不存在"),
     /**
      * 返回状态99 未知错误
      */

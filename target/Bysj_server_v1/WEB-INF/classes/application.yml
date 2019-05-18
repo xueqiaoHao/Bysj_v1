@@ -1,0 +1,27 @@
+
+spring:
+  datasource:
+    username: root
+    password: admin
+    url: jdbc:mysql://localhost:3306/graduation_info?characterEncoding=utf8
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+    prefix: classpath:/templates/
+    suffix: .html
+
+mybatis:
+  typeAliasesPackage: com.hao.employment.bean.entry
+  configuration:
+    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+    level:
+      com.hao.employment.dao: debug
+server:
+  port: 8088
+#    org.apache.ibatis.logging.log4j2.Log4j2Impl
+
+# 改成你的mapper文件所在包路径
+#  file:
+#    logs/spring-boot-logging.log

@@ -4,6 +4,7 @@ import com.hao.employment.bean.entry.SysMenu;
 import com.hao.employment.bean.entry.SysUser;
 import com.hao.employment.bean.param.SearchParams;
 import com.hao.employment.bean.param.UserLoginParams;
+import com.hao.employment.bean.param.UserSelfRole;
 import com.hao.employment.bean.pojo.PageDataPojo;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.enums.ResultStatusEnum;
@@ -36,6 +37,7 @@ public class UserServiceImpl implements UserService {
             return resultPojo;
         }
         else {
+            resultPojo.setStatus(ResultStatusEnum.ACCOUNT_NOT_FOUND.getCode());
             return resultPojo;
         }
     }
@@ -53,7 +55,7 @@ public class UserServiceImpl implements UserService {
             return ResultStatusEnum.SUCCESS.getCode();
         }
 
-        return ResultStatusEnum.ERROR.getCode();
+        return ResultStatusEnum.LOGIN_WRONG_PASSWORD.getCode();
     }
 
     @Override
@@ -136,6 +138,16 @@ public class UserServiceImpl implements UserService {
     /*删除用户*/
     public void deleteUserEntity(SysUser sysUser){
         userMapper.deleteUser(sysUser);
+    }
+
+    @Override
+    public void setUserRole(UserSelfRole userSelfRole) {
+        String flag=userMapper.haveUserRoleRelation(userSelfRole);
+        if(flag==null||flag.trim().length()==0){
+            userMapper.addUserRole(userSelfRole);
+        }else {
+            userMapper.updateUserRole(userSelfRole);
+        }
     }
 
 }

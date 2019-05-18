@@ -4,6 +4,7 @@ import com.hao.employment.bean.entry.SysMenu;
 import com.hao.employment.bean.entry.SysUser;
 import com.hao.employment.bean.param.SearchParams;
 import com.hao.employment.bean.param.UserLoginParams;
+import com.hao.employment.bean.param.UserSelfRole;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.enums.ResultStatusEnum;
 import org.springframework.stereotype.Component;
@@ -24,4 +25,5 @@ public interface UserService {
     ResultPojo getAccountList(SearchParams searchParams);
     void addUserEntity(SysUser sysUser);
     void deleteUserEntity(SysUser sysUser);
+    void setUserRole(UserSelfRole userSelfRole);
 }

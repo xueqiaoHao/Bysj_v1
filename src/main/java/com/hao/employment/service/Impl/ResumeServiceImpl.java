@@ -27,6 +27,15 @@ import java.util.List;
 public class ResumeServiceImpl implements ResumeService {
     @Autowired
     ResumeMapper resumeMapper;
+
+    @Override
+    public ResultPojo saveResume(Resume resume) {
+        ResultPojo resultPojo=new ResultPojo();
+        resumeMapper.saveResume(resume);
+        resultPojo.setStatus(ResultStatusEnum.SUCCESS.getCode());
+        return resultPojo;
+    }
+
     @Override
     public  ResultPojo getResumePageData(ResumeSearchParams resumeSearchParams){
         long total=resumeMapper.getResumeDataCount(resumeSearchParams);

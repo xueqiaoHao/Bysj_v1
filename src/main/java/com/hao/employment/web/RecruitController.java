@@ -2,6 +2,7 @@ package com.hao.employment.web;
 
 
 import com.hao.employment.bean.entry.Recruitment;
+import com.hao.employment.bean.param.RecruitSearchOwnParams;
 import com.hao.employment.bean.param.RecruitSearchParams;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.util.DateUtil;
@@ -49,6 +50,14 @@ public class RecruitController {
     public ResultPojo getRecruitment(@RequestBody RecruitSearchParams recruitSearchParams){
         ResultPojo resultDto=recruitService.getRecruitmentPageData(recruitSearchParams);
         return resultDto;
+    }
+    /*查看自己已经发布过的招聘信息*/
+    @ResponseBody
+    @RequestMapping(value = "getOwnRecruitment",method = RequestMethod.POST)
+    public ResultPojo getOwnRecruitment(@RequestBody RecruitSearchOwnParams recruitSearchOwnParams){
+        ResultPojo resultDto=recruitService.getOwnRecruitmentPageData(recruitSearchOwnParams);
+        return resultDto;
+
     }
 
     /*

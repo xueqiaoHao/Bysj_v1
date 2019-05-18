@@ -1,5 +1,6 @@
 package com.hao.employment.service;
 
+import com.hao.employment.bean.entry.Resume;
 import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
 import com.hao.employment.bean.pojo.ResultPojo;
@@ -15,7 +16,7 @@ public interface ResumeService {
     发布简历
     查看简历
     * */
-
+    ResultPojo saveResume(Resume resume);
 
     /*查看简历*/
     ResultPojo getResumePageData(ResumeSearchParams resumeSearchParams);

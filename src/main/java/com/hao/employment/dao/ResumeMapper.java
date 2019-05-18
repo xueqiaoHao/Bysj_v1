@@ -1,8 +1,10 @@
 package com.hao.employment.dao;
 
+import com.hao.employment.bean.entry.Recruitment;
 import com.hao.employment.bean.entry.Resume;
 import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -37,6 +39,13 @@ public interface ResumeMapper {
     /*发布简历
     * 简历保存
     * 简历投递*/
+    @Insert("<script> " +
+            "insert into recruitment_info " +
+            "(id,name,age,sex,birth,nation,politics_status,major,depart,education_back,education_length,training_mode,origin,graduation_time,job_intention,languages,language_level,computer_level,post,phone,email,address,experience,message,id,name,age,sex,birth,nation,politics_status,major,depart,education_back,education_length,training_mode,origin,graduation_time,job_intention,languages,language_level,computer_level,phone,email,address,message,is_public,delivered_com,is_signed) " +
+            "values " +
+            "(null,#{name},#{address},#{nature},#{type},#{publisher},#{depart},#{phone},#{info},#{major},#{educationBack},#{peopleNums},#{jobWay},#{jobInfo},#{careerTalk},#{talkTime},#{publishTime}) " +
+            "</script> ")
+    void saveResume(Resume resume);
 
 
     /*计算签约率

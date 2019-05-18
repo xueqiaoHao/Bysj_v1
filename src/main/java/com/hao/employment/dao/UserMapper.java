@@ -4,10 +4,8 @@ import com.hao.employment.bean.entry.SysMenu;
 import com.hao.employment.bean.entry.SysUser;
 import com.hao.employment.bean.param.SearchParams;
 import com.hao.employment.bean.param.UserLoginParams;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import com.hao.employment.bean.param.UserSelfRole;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -70,4 +68,16 @@ public interface UserMapper {
     /*删除用户*/
     @Delete("delete from sys_user where id= #{id}")
     void deleteUser(SysUser sysUser);
+    /*用户身份指定。即身份id表对应关系设定
+    * 先查下表里有没有这个人，如果没有就是新插入，如果有就是更新
+    * */
+    @Select("select ur.user_id from sys_user_role as ur where user_id=#{userId}")
+    String haveUserRoleRelation(UserSelfRole userSelfRole);
+    @Insert("insert into sys_user_role (user_id,role_id) " +
+            "values (#{userId}, #{role})")
+    void addUserRole(UserSelfRole userSelfRole);
+    @Update("update sys_user_role " +
+            "set role_id=#{role} " +
+            "where user_id=#{userId} ")
+    void updateUserRole(UserSelfRole userSelfRole);
 }

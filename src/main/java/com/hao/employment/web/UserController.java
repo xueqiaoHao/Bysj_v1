@@ -4,6 +4,7 @@ import com.hao.employment.bean.entry.SysMenu;
 import com.hao.employment.bean.entry.SysUser;
 import com.hao.employment.bean.param.SearchParams;
 import com.hao.employment.bean.param.UserLoginParams;
+import com.hao.employment.bean.param.UserSelfRole;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.enums.ResultStatusEnum;
 import com.hao.employment.service.UserService;
@@ -77,5 +78,14 @@ public class UserController {
     public void deleteUser(@RequestBody SysUser sysUser){
         log.info("id:"+sysUser.getId());
         userService.deleteUserEntity(sysUser);
+    }
+
+    /*用户赋予权限*/
+    @ResponseBody
+    @RequestMapping(value = "setUserRole")
+    public void setUserRole(@RequestBody UserSelfRole userSelfRole){
+        log.info("id:"+userSelfRole.getUserId());
+        userService.setUserRole(userSelfRole);
+
     }
 }

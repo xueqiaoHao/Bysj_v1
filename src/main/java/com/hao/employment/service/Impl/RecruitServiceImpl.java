@@ -1,6 +1,7 @@
 package com.hao.employment.service.Impl;
 
 import com.hao.employment.bean.entry.Recruitment;
+import com.hao.employment.bean.param.RecruitSearchOwnParams;
 import com.hao.employment.bean.param.RecruitSearchParams;
 import com.hao.employment.bean.pojo.PageDataPojo;
 import com.hao.employment.bean.pojo.RecruitEvePojo;
@@ -42,6 +43,22 @@ public class RecruitServiceImpl implements RecruitService {
         PageDataPojo pageDataPojo=new PageDataPojo();
         pageDataPojo.setPageSize(recruitSearchParams.getPageSize());
         pageDataPojo.setPageNumber(recruitSearchParams.getPageNumber());
+        pageDataPojo.setTotal(total);
+        pageDataPojo.setDataList(recruitmentList);
+        ResultPojo resultPojo=new ResultPojo();
+        resultPojo.setStatus(ResultStatusEnum.SUCCESS.getCode());
+        resultPojo.setMessage(ResultStatusEnum.SUCCESS.getMessage());
+        resultPojo.setData(pageDataPojo);
+        return resultPojo;
+    }
+
+    @Override
+    public ResultPojo getOwnRecruitmentPageData(RecruitSearchOwnParams recruitSearchOwnParams) {
+        Long total=recruitMapper.getRecruitmentOwnDataCount(recruitSearchOwnParams);
+        List<Recruitment> recruitmentList=recruitMapper.getRecruitmentOwnDataList(recruitSearchOwnParams);
+        PageDataPojo pageDataPojo=new PageDataPojo();
+        pageDataPojo.setPageSize(recruitSearchOwnParams.getPageSize());
+        pageDataPojo.setPageNumber(recruitSearchOwnParams.getPageNumber());
         pageDataPojo.setTotal(total);
         pageDataPojo.setDataList(recruitmentList);
         ResultPojo resultPojo=new ResultPojo();

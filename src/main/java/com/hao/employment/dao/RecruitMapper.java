@@ -2,6 +2,7 @@ package com.hao.employment.dao;
 
 import com.hao.employment.bean.entry.Recruitment;
 import com.hao.employment.bean.entry.Resume;
+import com.hao.employment.bean.param.RecruitSearchOwnParams;
 import com.hao.employment.bean.param.RecruitSearchParams;
 import com.hao.employment.bean.pojo.RecruitEvePojo;
 import org.apache.ibatis.annotations.Insert;
@@ -32,6 +33,17 @@ public interface RecruitMapper {
             "<if test=\"educationBack != null and educationBack != '' \"> AND com.education_back=#{educationBack}</if> " +
             "</where> limit #{offset},#{pageSize} </script> ")
     List<Recruitment> getRecruitmentDataList(RecruitSearchParams recruitSearchParams);
+
+    @Select("<script> select count(1) from recruitment_info as com " +" <where> " +
+            "name=#{comName}"+
+            "</where> </script> ")
+    Long getRecruitmentOwnDataCount(RecruitSearchOwnParams recruitSearchOwnParams);
+
+    @Select("<script> select * from recruitment_info as com " +" <where> " +
+            "name=#{comName}"+
+            "</where> limit #{offset},#{pageSize} </script> ")
+    List<Recruitment> getRecruitmentOwnDataList(RecruitSearchOwnParams recruitSearchOwnParams);
+
 
     /*发布招聘信息*/
     @Insert("<script> " +

@@ -1,6 +1,7 @@
 package com.hao.employment.web;
 
 
+import com.hao.employment.bean.entry.Resume;
 import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
 import com.hao.employment.bean.pojo.ResultPojo;
@@ -74,6 +75,14 @@ public class ResumeController {
         log.info(resumeSearchParams.toString());
         ResultPojo resultDto=resumeService.getSignedPercent(resumeSearchParams);
         return resultDto;
+    }
+    /*新建并存储简历*/
+    @ResponseBody
+    @RequestMapping(value = "saveResume",method = RequestMethod.POST)
+    public ResultPojo saveResume(@RequestBody Resume resume){
+        log.info(resume.toString());
+        ResultPojo resultPojo=resumeService.saveResume(resume);
+        return resultPojo;
     }
     /*简历投递
     * 将对应公司的名字写入deliveredCom

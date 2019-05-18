@@ -1,6 +1,7 @@
 package com.hao.employment.service;
 
 import com.hao.employment.bean.entry.Recruitment;
+import com.hao.employment.bean.param.RecruitSearchOwnParams;
 import com.hao.employment.bean.param.RecruitSearchParams;
 import com.hao.employment.bean.pojo.ResultPojo;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ public interface RecruitService {
     void publishRecruitment(Recruitment recruitment);
     /*查看招聘信息*/
     ResultPojo getRecruitmentPageData(RecruitSearchParams recruitSearchParams);
+    ResultPojo getOwnRecruitmentPageData(RecruitSearchOwnParams recruitSearchOwnParams);
     /*
     * 查看招聘信息统计结果
     * */
