@@ -26,6 +26,7 @@ com\hao\employment\bean\entry\Recruitment.class
 com\hao\employment\web\ResumeController.class
 com\hao\employment\bean\param\ResumeSearchParams.class
 com\hao\employment\service\RoleService.class
+com\hao\employment\web\PingController.class
 com\hao\employment\common\util\DateUtil.class
 com\hao\employment\dao\UserMapper.class
 com\hao\employment\service\UserService.class

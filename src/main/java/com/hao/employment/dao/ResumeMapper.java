@@ -41,9 +41,9 @@ public interface ResumeMapper {
     * 简历投递*/
     @Insert("<script> " +
             "insert into recruitment_info " +
-            "(id,name,age,sex,birth,nation,politics_status,major,depart,education_back,education_length,training_mode,origin,graduation_time,job_intention,languages,language_level,computer_level,post,phone,email,address,experience,message,id,name,age,sex,birth,nation,politics_status,major,depart,education_back,education_length,training_mode,origin,graduation_time,job_intention,languages,language_level,computer_level,phone,email,address,message,is_public,delivered_com,is_signed) " +
+            "(id,name,age,sex,birth,major,depart,education_back,education_length,training_mode,origin,graduation_time,job_intention,languages,language_level,computer_level,post,phone,email,address,experience,message,id,name,age,sex,birth,nation,politics_status,major,depart,education_back,education_length,training_mode,origin,graduation_time,job_intention,languages,language_level,computer_level,phone,email,address,message,is_public) " +
             "values " +
-            "(null,#{name},#{address},#{nature},#{type},#{publisher},#{depart},#{phone},#{info},#{major},#{educationBack},#{peopleNums},#{jobWay},#{jobInfo},#{careerTalk},#{talkTime},#{publishTime}) " +
+            "(null,#{name},#{age},#{sex},#{major},#{publisher},#{depart},#{phone},#{info},#{major},#{educationBack},#{peopleNums},#{jobWay},#{jobInfo},#{careerTalk},#{talkTime},#{publishTime}) " +
             "</script> ")
     void saveResume(Resume resume);
 
