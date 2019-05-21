@@ -4,6 +4,7 @@ import com.hao.employment.bean.entry.Recruitment;
 import com.hao.employment.bean.entry.Resume;
 import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
+import com.hao.employment.bean.param.SignParams;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -40,10 +41,12 @@ public interface ResumeMapper {
     * 简历保存
     * 简历投递*/
     @Insert("<script> " +
-            "insert into recruitment_info " +
-            "(id,name,age,sex,birth,major,depart,education_back,education_length,training_mode,origin,graduation_time,job_intention,languages,language_level,computer_level,post,phone,email,address,experience,message,id,name,age,sex,birth,nation,politics_status,major,depart,education_back,education_length,training_mode,origin,graduation_time,job_intention,languages,language_level,computer_level,phone,email,address,message,is_public) " +
+            "insert into resume_info " +
+            "(id,name,age,sex,birth,major,depart,education_back,education_length," +
+            "training_mode,origin,graduation_time,job_intention,languages,language_level,computer_level,phone,email,address,message,is_public,delivered_com,is_signed) " +
             "values " +
-            "(null,#{name},#{age},#{sex},#{major},#{publisher},#{depart},#{phone},#{info},#{major},#{educationBack},#{peopleNums},#{jobWay},#{jobInfo},#{careerTalk},#{talkTime},#{publishTime}) " +
+            "(null,#{name},#{age},#{sex},#{birth},#{major},#{depart},#{educationBack},#{educationLength},#{trainingMode},#{origin},#{graduationTime},#{jobIntention},#{languages},#{languageLevel},#{computerLevel},#{phone}, " +
+            "#{email},#{address},#{message},#{isPublic},#{deliveredCom},#{isSigned}) " +
             "</script> ")
     void saveResume(Resume resume);
 
@@ -69,4 +72,8 @@ public interface ResumeMapper {
     /*之前有过投递其他家公司*/
     @Update("UPDATE resume_info SET delivered_com=CONCAT(delivered_com,',',#{comName}) WHERE name=#{userName}")
     void updateDeliverComAgain(DeliverResumeParams deliverResumeParams);
+
+    /*更新签约进度*/
+    @Update("UPDATE resume_info set is_signed=#{isSigned} where name=#{stuName}")
+    void updateIsSigned(SignParams signParams);
 }

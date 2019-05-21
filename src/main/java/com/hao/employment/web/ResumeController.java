@@ -4,6 +4,7 @@ package com.hao.employment.web;
 import com.hao.employment.bean.entry.Resume;
 import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
+import com.hao.employment.bean.param.SignParams;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.dao.UserMapper;
 import com.hao.employment.service.ResumeService;
@@ -94,5 +95,15 @@ public class ResumeController {
 //        根据用户名去表里查对应的那条简历
         ResultPojo resultDto=resumeService.deliverResume(deliverResumeParams);
         return resultDto;
+    }
+
+    /*跟进签约信息*/
+    @ResponseBody
+    @RequestMapping(value = "setSigned",method = RequestMethod.POST)
+    public ResultPojo setSigned(@RequestBody SignParams signParams){
+        /*将对应用户名的那条数据的签约情况设为传递过来的值*/
+        log.info(signParams.toString());
+        ResultPojo resultPojo=resumeService.setSign(signParams);
+        return resultPojo;
     }
 }

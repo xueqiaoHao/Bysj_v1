@@ -3,6 +3,7 @@ package com.hao.employment.service;
 import com.hao.employment.bean.entry.Resume;
 import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
+import com.hao.employment.bean.param.SignParams;
 import com.hao.employment.bean.pojo.ResultPojo;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -25,4 +26,6 @@ public interface ResumeService {
     ResultPojo getSignedPercent(ResumeSearchParams resumeSearchParams);
     /*投递简历*/
     ResultPojo deliverResume(DeliverResumeParams deliverResumeParams);
+    /*更新签约进度*/
+    ResultPojo setSign(SignParams signParams);
 }

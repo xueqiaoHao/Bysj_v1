@@ -45,8 +45,8 @@ public class Resume {
     private String email;
     private String address;
     private String message;
-    @Column(name = "is_publish")
-    private Integer isPublish;
+    @Column(name = "is_public")
+    private Integer isPublic;
     @Column(name = "delivered_com")
     private String deliveredCom;
     @Column(name = "is_signed")

@@ -3,6 +3,7 @@ package com.hao.employment.service.Impl;
 import com.hao.employment.bean.entry.Resume;
 import com.hao.employment.bean.param.DeliverResumeParams;
 import com.hao.employment.bean.param.ResumeSearchParams;
+import com.hao.employment.bean.param.SignParams;
 import com.hao.employment.bean.pojo.PageDataPojo;
 import com.hao.employment.bean.pojo.ResultPojo;
 import com.hao.employment.common.enums.ResultStatusEnum;
@@ -76,6 +77,14 @@ public class ResumeServiceImpl implements ResumeService {
         ResultPojo resultPojo=new ResultPojo();
         resultPojo.setStatus(ResultStatusEnum.SUCCESS.getCode());
         resultPojo.setMessage(ResultStatusEnum.SUCCESS.getMessage());
+        return resultPojo;
+    }
+
+    @Override
+    public ResultPojo setSign(SignParams signParams) {
+        ResultPojo resultPojo=new ResultPojo();
+        resumeMapper.updateIsSigned(signParams);
+        resultPojo.setStatus(ResultStatusEnum.SUCCESS.getCode());
         return resultPojo;
     }
 

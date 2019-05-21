@@ -16,6 +16,7 @@ com\hao\employment\web\UserController.class
 com\hao\employment\bean\param\DeliverResumeParams.class
 com\hao\employment\service\Impl\ResumeServiceImpl.class
 com\hao\employment\service\RecruitService.class
+com\hao\employment\bean\param\SignParams.class
 com\hao\employment\bean\pojo\PageDataPojo.class
 com\hao\employment\bean\param\RecruitSearchOwnParams.class
 com\hao\employment\bean\pojo\RecruitEvePojo.class
